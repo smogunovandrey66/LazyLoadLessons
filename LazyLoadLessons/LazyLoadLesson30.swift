@@ -165,7 +165,7 @@ func runLesson30() {
   print("\nСоздадим два новых массива и включим в них некоторые элементы из двух исходных:")
   let arrYet1 = makeRandomArray()
   let arrYet2 = makeRandomArray()
-  print("arrYe1:", arrYet1, "arrYet2", arrYet2, "array for arrYet1:", arr, "array for arrYet2:", arrNew)
+  print("arrYe1:", arrYet1, "arrYet2:", arrYet2, "array for arrYet1:", arr, "array for arrYet2:", arrNew)
   
   print("\nAfter")
   print(includeInArray(arrYet1, arr), includeInArray(arrYet2, arrNew))
