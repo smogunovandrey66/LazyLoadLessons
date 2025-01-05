@@ -80,11 +80,11 @@ func includeInArray(_ arrForModify: [Int], _ arrSource: [Int]) -> [Int] {
 }
 
 /**
- Сортировка пузырьком.
+ Моя сортировка пузырьком.
   - Parameter arr: Сортируемый массив
   - Returns: Отсортированный массив
  */
-func bubbleSort(_ arr: [Int]) -> [Int] {
+func myBubbleSort(_ arr: [Int]) -> [Int] {
   var res = arr
   
   var lastIdx = arr.count - 1
@@ -101,6 +101,60 @@ func bubbleSort(_ arr: [Int]) -> [Int] {
     if(i == lastIdx) {
       i = 0
       lastIdx += -1
+    }
+  }
+  
+  return res
+}
+
+/**
+ Класссическая сортировка пузырьком
+ */
+func classicBubleSort(_ arr: [Int]) -> [Int] {
+  var res = arr
+  
+  for i in 1 ..< res.count {
+    var find = false
+    
+    for j in 0 ..< res.count - i {
+      let cur = res[j]
+      let next = res[j + 1]
+      
+      if cur > next {
+        res[j + 1] = cur
+        res[j] = next
+        
+        find = true
+      }
+    }
+    
+    if !find {
+      break
+    }
+  }
+  
+  return res
+}
+
+/**
+ Сортировка выбором
+ */
+func selectionSort(_ arr: [Int]) -> [Int] {
+  var res = arr
+  
+  for i in 0 ..< res.count {
+    var minIdx = i
+    
+    for j in i + 1 ..< res.count {
+      if res[j] < res[minIdx] {
+        minIdx = j
+      }
+    }
+    
+    if minIdx != i {
+      let tmp = res[minIdx]
+      res[minIdx] = res[i]
+      res[i] = tmp
     }
   }
   
@@ -150,7 +204,7 @@ func runLesson30() {
   print(includeInArray(arr, arrNew))
   
   print("\nСортировка пузырьком")
-  print(bubbleSort(arr))
+  print(myBubbleSort(arr))
   
   print("\nОбмен двух массивов:")
   
@@ -169,6 +223,15 @@ func runLesson30() {
   
   print("\nAfter")
   print(includeInArray(arrYet1, arr), includeInArray(arrYet2, arrNew))
+  
+  print("\nКлассическая сортировка пузырьком:")
+  let yetArr = makeRandomArray()
+  print(yetArr)
+  print(classicBubleSort(yetArr))
+  
+  print("\nСортировка выбором(Select sort):")
+  print(yetArr)
+  print(selectionSort(yetArr))
   
   print("\nLesson 30 end ----------------------------\n")
 }
